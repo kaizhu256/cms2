@@ -1,0 +1,3705 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-cms2/index.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../base.css">
+    <style type="text/css">
+        div.coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header medium">
+    <h1>Code coverage report for <span class="entity">node-cms2/index.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">67.83% <small>(234 / 345)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">58.88% <small>(126 / 214)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">82.35% <small>(42 / 51)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">67.83% <small>(234 / 345)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">node-cms2/</a> &#187; index.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790
+791
+792
+793
+794
+795
+796
+797
+798
+799
+800
+801
+802
+803
+804
+805
+806
+807
+808
+809
+810
+811
+812
+813
+814
+815
+816
+817
+818
+819
+820
+821
+822
+823
+824
+825
+826
+827
+828
+829
+830
+831
+832
+833
+834
+835
+836
+837
+838
+839
+840
+841
+842
+843
+844
+845
+846
+847
+848
+849
+850
+851
+852
+853
+854
+855
+856
+857
+858
+859
+860
+861
+862
+863
+864
+865
+866
+867
+868
+869
+870
+871
+872
+873
+874
+875
+876
+877
+878
+879
+880
+881
+882
+883
+884
+885
+886
+887
+888
+889
+890
+891
+892
+893
+894
+895
+896
+897
+898
+899
+900
+901
+902
+903
+904
+905
+906
+907
+908
+909
+910
+911
+912
+913
+914
+915
+916
+917
+918
+919
+920
+921
+922
+923
+924
+925
+926
+927
+928
+929
+930
+931
+932
+933
+934
+935
+936
+937
+938
+939
+940
+941
+942
+943
+944
+945
+946
+947
+948
+949
+950
+951
+952
+953
+954
+955
+956
+957
+958
+959
+960
+961
+962
+963
+964
+965
+966
+967
+968
+969
+970
+971
+972
+973
+974
+975
+976
+977
+978
+979
+980
+981
+982
+983
+984
+985
+986
+987
+988
+989
+990
+991
+992
+993
+994
+995
+996
+997
+998
+999
+1000
+1001
+1002
+1003
+1004
+1005
+1006
+1007
+1008
+1009
+1010
+1011
+1012
+1013
+1014
+1015
+1016
+1017
+1018
+1019
+1020
+1021
+1022
+1023
+1024
+1025
+1026
+1027
+1028
+1029
+1030
+1031
+1032
+1033
+1034
+1035
+1036
+1037
+1038
+1039
+1040
+1041
+1042
+1043
+1044
+1045
+1046
+1047
+1048
+1049
+1050
+1051
+1052
+1053
+1054
+1055
+1056
+1057
+1058
+1059
+1060
+1061
+1062
+1063
+1064
+1065
+1066
+1067
+1068
+1069
+1070
+1071
+1072
+1073
+1074
+1075
+1076
+1077
+1078
+1079
+1080
+1081
+1082
+1083
+1084
+1085
+1086
+1087
+1088
+1089
+1090
+1091
+1092
+1093
+1094
+1095
+1096
+1097
+1098
+1099
+1100
+1101
+1102
+1103
+1104
+1105
+1106
+1107
+1108
+1109
+1110
+1111
+1112
+1113
+1114
+1115
+1116
+1117
+1118
+1119
+1120
+1121
+1122
+1123
+1124
+1125
+1126
+1127
+1128
+1129
+1130
+1131
+1132
+1133
+1134
+1135
+1136
+1137
+1138
+1139
+1140
+1141
+1142
+1143
+1144
+1145
+1146
+1147
+1148
+1149
+1150
+1151
+1152
+1153
+1154
+1155
+1156
+1157
+1158
+1159
+1160
+1161
+1162
+1163
+1164
+1165
+1166
+1167
+1168
+1169
+1170
+1171
+1172
+1173
+1174
+1175
+1176
+1177
+1178
+1179
+1180
+1181
+1182
+1183
+1184
+1185
+1186
+1187
+1188
+1189
+1190
+1191
+1192
+1193
+1194
+1195
+1196
+1197
+1198
+1199
+1200
+1201
+1202
+1203
+1204
+1205
+1206
+1207
+1208
+1209
+1210
+1211
+1212
+1213
+1214
+1215
+1216
+1217
+1218
+1219
+1220
+1221
+1222</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">84</span>
+<span class="cline-any cline-yes">84</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">656</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">652</span>
+<span class="cline-any cline-yes">652</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">652</span>
+<span class="cline-any cline-yes">308</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">156</span>
+<span class="cline-any cline-yes">52</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">760</span>
+<span class="cline-any cline-yes">345</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">904</span>
+<span class="cline-any cline-yes">148</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-yes">176</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">176</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">80</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jslint
+    browser: true,
+    maxerr: 8,
+    maxlen: 96,
+    node: true,
+    nomen: true,
+    stupid: true
+*/
+(function (local) {
+    'use strict';
+&nbsp;
+&nbsp;
+&nbsp;
+    // run shared js-env code
+    (function () {
+        local.cms2.modelDereference = function ($ref) {
+            /*
+                this function will try to dereference the model from $ref
+            */
+            try {
+                return $ref &amp;&amp; local.cms2.swaggerJson
+                    .definitions[(/^\#\/definitions\/(\w+)$/).exec($ref)[1]];
+            } catch (ignore) {
+            }
+        };
+&nbsp;
+        local.cms2.modelNormalizeIdMongodb = function (data) {
+            /*
+                this function will recursively convert the property id to _id
+            */
+            local.utility2.objectTraverse(data, function (element) {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (element &amp;&amp; element.id) {
+<span class="cstat-no" title="statement not covered" >                    element._id = element._id || element.id;</span>
+<span class="cstat-no" title="statement not covered" >                    delete element.id;</span>
+                }
+            });
+            return data;
+        };
+&nbsp;
+        local.cms2.modelNormalizeIdSwagger = function (data) {
+            /*
+                this function will recursively convert the property _id to id
+            */
+            local.utility2.objectTraverse(data, function (element) {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (element &amp;&amp; element._id) {
+<span class="cstat-no" title="statement not covered" >                    element.id = element.id || element._id;</span>
+<span class="cstat-no" title="statement not covered" >                    delete element._id;</span>
+                }
+            });
+            return data;
+        };
+&nbsp;
+        local.cms2.modelNormalize = <span class="fstat-no" title="function not covered" >function (options) {</span>
+            /*
+                this function will normalize options.data according to options.model
+            */
+<span class="cstat-no" title="statement not covered" >            var data;</span>
+<span class="cstat-no" title="statement not covered" >            data = options.data || {};</span>
+            // init _timeCreated
+<span class="cstat-no" title="statement not covered" >            data._timeCreated = options.dataPrevious._timeCreated || new Date().toISOString();</span>
+            // init _timeModified
+<span class="cstat-no" title="statement not covered" >            data._timeModified = new Date().toISOString();</span>
+        };
+&nbsp;
+        local.cms2.modelValidate = function (options) {
+            /*
+               this function will validate options.data according to options.model
+            */
+            var data, model;
+            data = options.data;
+            model = options.model || {};
+            Object.keys(model.properties || {}).forEach(<span class="fstat-no" title="function not covered" >function (key) {</span>
+<span class="cstat-no" title="statement not covered" >                try {</span>
+<span class="cstat-no" title="statement not covered" >                    local.cms2.modelValidateProperty({</span>
+                        data: data[key],
+                        key: key,
+                        property: model.properties[key],
+                        required: model.required &amp;&amp; model.required.indexOf(key) &gt;= 0
+                    });
+                } catch (errorCaught) {
+<span class="cstat-no" title="statement not covered" >                    errorCaught.message = '"' + options.key + '.' + key +</span>
+                        '" - ' + errorCaught.message;
+<span class="cstat-no" title="statement not covered" >                    errorCaught.stack = errorCaught.message + '\n' + errorCaught.stack;</span>
+<span class="cstat-no" title="statement not covered" >                    throw errorCaught;</span>
+                }
+            });
+            return data;
+        };
+&nbsp;
+        local.cms2.modelValidateProperty = function (options) {
+            /*
+               this function will validate options.data according to options.property
+            */
+            /*jslint bitwise: true, regexp: true*/
+            var assert, data, format, property, tmp, type;
+            assert = function (valid) {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (!valid) {
+<span class="cstat-no" title="statement not covered" >                    throw new Error('invalid "' + options.key + ':' + format +</span>
+                            '" property - ' + JSON.stringify(data));
+                }
+            };
+            property = options.property || <span class="branch-1 cbranch-no" title="branch not covered" >{};</span>
+            data = options.data;
+            type = property.type || <span class="branch-1 cbranch-no" title="branch not covered" >property.$ref </span>|| (<span class="branch-2 cbranch-no" title="branch not covered" >property.schema </span>&amp;&amp; <span class="branch-3 cbranch-no" title="branch not covered" >property.schema.$ref)</span>;
+            format = property.format || type;
+            // JSON.parse data
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (options.parse &amp;&amp;
+                    data &amp;&amp; typeof data === 'string' &amp;&amp;
+                    property.type !== 'file' &amp;&amp; property.type !== 'string') {
+                try {
+                    data = JSON.parse(data);
+                } catch (errorCaught) {
+<span class="cstat-no" title="statement not covered" >                    assert(null);</span>
+                }
+            }
+            // validate undefined data
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (data === null || data === undefined) {
+<span class="cstat-no" title="statement not covered" >                if (options.required) {</span>
+<span class="cstat-no" title="statement not covered" >                    throw new Error('required "' + options.key + ':' + format +</span>
+                        '" property cannot be null or undefined');
+                }
+<span class="cstat-no" title="statement not covered" >                return data;</span>
+            }
+            // validate property.type
+// https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md#data-types
+            switch (type) {
+<span class="branch-0 cbranch-no" title="branch not covered" >            case 'array':</span>
+<span class="cstat-no" title="statement not covered" >                assert(Array.isArray(data));</span>
+                // recurse - validate elements in list
+<span class="cstat-no" title="statement not covered" >                data.forEach(<span class="fstat-no" title="function not covered" >function (element) {</span></span>
+<span class="cstat-no" title="statement not covered" >                    local.cms2.modelValidateProperty({</span>
+                        key: options.key,
+                        property: property.items,
+                        data: element
+                    });
+                });
+<span class="cstat-no" title="statement not covered" >                break;</span>
+<span class="branch-1 cbranch-no" title="branch not covered" >            case 'boolean':</span>
+<span class="cstat-no" title="statement not covered" >                assert(typeof data === 'boolean');</span>
+<span class="cstat-no" title="statement not covered" >                break;</span>
+<span class="branch-2 cbranch-no" title="branch not covered" >            case 'file':</span>
+<span class="cstat-no" title="statement not covered" >                break;</span>
+            case 'integer':
+                assert(typeof data === 'number' &amp;&amp; (data | 0) === data);
+                switch (property.format) {
+                case 'int32':
+                case 'int64':
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+                }
+                break;
+<span class="branch-4 cbranch-no" title="branch not covered" >            case 'number':</span>
+<span class="cstat-no" title="statement not covered" >                assert(typeof data === 'number');</span>
+<span class="cstat-no" title="statement not covered" >                switch (property.format) {</span>
+                case 'double':
+                case 'float':
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+                }
+<span class="cstat-no" title="statement not covered" >                break;</span>
+            case 'object':
+                assert(typeof data === 'object');
+                break;
+<span class="branch-6 cbranch-no" title="branch not covered" >            case 'string':</span>
+<span class="cstat-no" title="statement not covered" >                assert(typeof data === 'string');</span>
+<span class="cstat-no" title="statement not covered" >                switch (property.format) {</span>
+                // https://github.com/swagger-api/swagger-spec/issues/50
+                case 'byte':
+<span class="cstat-no" title="statement not covered" >                    assert(!(/[^\n\r\+\/0-9\=A-Za-z]/).test(data));</span>
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+                case 'date':
+<span class="cstat-no" title="statement not covered" >                    tmp = new Date(data);</span>
+<span class="cstat-no" title="statement not covered" >                    assert(tmp.getTime() &amp;&amp; data === tmp.toISOString().slice(0, 10));</span>
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+                case 'date-time':
+<span class="cstat-no" title="statement not covered" >                    tmp = new Date(data);</span>
+<span class="cstat-no" title="statement not covered" >                    assert(tmp.getTime() &amp;&amp; data === tmp.toISOString());</span>
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+                case 'email':
+<span class="cstat-no" title="statement not covered" >                    assert(local.utility2.regexpEmailValidate.test(data));</span>
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+                }
+<span class="cstat-no" title="statement not covered" >                break;</span>
+            }
+            // recurse - validate model according to property.$ref
+            local.cms2.modelValidate({
+                data: data,
+                model: local.cms2.modelDereference(type),
+                key: options.key
+            });
+            return data;
+        };
+&nbsp;
+        local.cms2.userRoleHas = <span class="fstat-no" title="function not covered" >function (user, role) {</span>
+            /*
+                this function will check if the user has the given role
+            */
+<span class="cstat-no" title="statement not covered" >            return local.cms2.userRoleDict[user.role] &gt;= local.cms2.userRoleDict[role];</span>
+        };
+    }());
+    switch (local.modeJs) {
+&nbsp;
+&nbsp;
+&nbsp;
+    // run node js-env code
+    case 'node':
+        local.cms2.modelCreate = function (options) {
+            /*
+                this function will update swaggerJson.paths with options.paths
+            */
+&nbsp;
+&nbsp;
+&nbsp;
+/* jslint-indent-begin 12 */
+/*jslint maxlen: 108, regexp: true*/
+var model, pathMethod, tmp;
+local.utility2.objectSetDefault(options, {
+    // init default crud paths
+    paths: options._crudDefault &amp;&amp; {
+        '/{{_modelName}}/createOne': { post: {
+            _requestHandler: local.cms2.middlewareCrudDefault,
+            parameters: [{
+                description: '{{_modelName}} object',
+                in: 'body',
+                name: 'body',
+                required: true,
+                schema: { $ref: '#/definitions/{{_modelName}}' }
+            }],
+            responses: {
+                200: {
+                    description: '200 ok - ' +
+                        'http://jsonapi.org/format/#document-structure-top-level',
+                    schema: { $ref: '#/definitions/JsonApiResponseData{{_modelName}}' }
+                }
+            },
+            summary: 'create one {{_modelName}} object',
+            tags: ['{{_modelName}}']
+        } },
+        '/{{_modelName}}/deleteByIdOne/{id}': { delete: {
+            _requestHandler: local.cms2.middlewareCrudDefault,
+            parameters: [{
+                description: '{{_modelName}} id',
+                in: 'path',
+                name: 'id',
+                required: true,
+                type: 'string'
+            }],
+            summary: 'delete one {{_modelName}} object by id',
+            tags: ['{{_modelName}}']
+        } },
+        '/{{_modelName}}/getByIdOne/{id}': { get: {
+            _requestHandler: local.cms2.middlewareCrudDefault,
+            parameters: [{
+                description: '{{_modelName}} id',
+                in: 'path',
+                name: 'id',
+                required: true,
+                type: 'string'
+            }],
+            responses: {
+                200: {
+                    description: '200 ok - ' +
+                        'http://jsonapi.org/format/#document-structure-top-level',
+                    schema: { $ref: '#/definitions/JsonApiResponseData{{_modelName}}' }
+                }
+            },
+            summary: 'get one {{_modelName}} object by id',
+            tags: ['{{_modelName}}']
+        } },
+        '/{{_modelName}}/getByQueryMany': { get: {
+            _requestHandler: local.cms2.middlewareCrudDefault,
+            parameters: [{
+                description: 'mongodb query param',
+                default: '{"_id":"foo"}',
+                in: 'query',
+                name: 'query',
+                required: true,
+                type: 'object'
+            }, {
+                description: 'mongodb projection param',
+                default: '{}',
+                in: 'query',
+                name: 'projection',
+                type: 'object'
+            }, {
+                description: 'mongodb limit param',
+                default: 1,
+                in: 'query',
+                name: 'limit',
+                required: true,
+                type: 'integer'
+            }, {
+                description: 'mongodb sort param',
+                default: '{"_timeModified":-1}',
+                in: 'query',
+                name: 'sort',
+                type: 'object'
+            }],
+            responses: {
+                200: {
+                    description: '200 ok - ' +
+                        'http://jsonapi.org/format/#document-structure-top-level',
+                    schema: { $ref: '#/definitions/JsonApiResponseData{{_modelName}}' }
+                }
+            },
+            summary: 'get many {{_modelName}} objects by query',
+            tags: ['{{_modelName}}']
+        } },
+        '/{{_modelName}}/replaceOrCreateOne': { put: {
+            _requestHandler: local.cms2.middlewareCrudDefault,
+            parameters: [{
+                description: '{{_modelName}} object',
+                in: 'body',
+                name: 'body',
+                required: true,
+                schema: { $ref: '#/definitions/{{_modelName}}' }
+            }],
+            responses: {
+                200: {
+                    description: '200 ok - ' +
+                        'http://jsonapi.org/format/#document-structure-top-level',
+                    schema: { $ref: '#/definitions/JsonApiResponseData{{_modelName}}' }
+                }
+            },
+            summary: 'replace or create one {{_modelName}} object',
+            tags: ['{{_modelName}}']
+        } },
+        '/{{_modelName}}/updateOrCreateOne': { put: {
+            _requestHandler: local.cms2.middlewareCrudDefault,
+            parameters: [{
+                description: '{{_modelName}} object',
+                in: 'body',
+                name: 'body',
+                required: true,
+                schema: { $ref: '#/definitions/{{_modelName}}' }
+            }],
+            responses: {
+                200: {
+                    description: '200 ok - ' +
+                        'http://jsonapi.org/format/#document-structure-top-level',
+                    schema: { $ref: '#/definitions/JsonApiResponseData{{_modelName}}' }
+                }
+            },
+            summary: 'update or create one {{_modelName}} object',
+            tags: ['{{_modelName}}']
+        } }
+    },
+    // init default definitions
+    definitions: {
+        'JsonApiResponseData{{_modelName}}': {
+            properties: { data: {
+                items: { $ref: '#/definitions/{{_modelName}}' },
+                type: 'array'
+            } },
+            'x-inheritList': [{ $ref: '#/definitions/JsonApiResponseData' }]
+        }
+    }
+}, 2);
+// recursively stringFormat options
+local.utility2.objectTraverse(options, function (element) {
+    Object.keys(element &amp;&amp; typeof element === 'object'
+        ? element
+        : {}).forEach(function (key) {
+        tmp = local.utility2.stringFormat(key, options);
+        if (tmp !== key) {
+            // if there is no collision, then rename key
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (element[tmp] === undefined) {
+                element[tmp] = element[key];
+            }
+            // remove old key
+            delete element[key];
+        }
+        if (typeof element[tmp] === 'string') {
+            element[tmp] = local.utility2.stringFormat(element[tmp], options);
+        }
+    });
+});
+// update swaggerJson.definitions
+// init modelDict
+local.cms2.modelDict = local.cms2.modelDict || {};
+// init model
+model = local.cms2.modelDict[options._modelName] = options.definitions[options._modelName];
+// init model.collection
+local.utility2.taskCacheCreateOrAddCallback(
+    { key: 'cms2.mongodbConnect' },
+    null,
+    function () {
+        model.collection = local.cms2.db.collection(options._collectionName);
+    }
+);
+// update swaggerJson.paths
+Object.keys(options.paths).forEach(function (path) {
+    Object.keys(options.paths[path]).forEach(function (method) {
+        pathMethod = options.paths[path][method];
+        // init pathMethod.responses
+        local.utility2.objectSetDefault(pathMethod, { responses: {
+            200: {
+                description: 'ok - ' +
+                    'http://jsonapi.org/format/#document-structure-top-level',
+                schema: { $ref: '#/definitions/JsonApiResponseData' }
+            },
+            default: {
+                description: 'internal server error - ' +
+                    'http://jsonapi.org/format/#errors',
+                schema: { $ref: '#/definitions/JsonApiResponseError' }
+            }
+        } }, 2);
+        // init pathMethod.operationId
+        pathMethod.operationId = path.split('/')[2];
+        // init pathMethod._*
+        Object.keys(options).forEach(function (key) {
+            if (key[0] === '_' &amp;&amp; typeof options[key] === 'string') {
+                pathMethod[key] = pathMethod[key] || options[key];
+            }
+        });
+        pathMethod._method = method;
+        pathMethod._path = path;
+        pathMethod._requestHandlerKey = path.replace((/\{\S*?\}/), '');
+        // init requestHandlerDict
+        local.cms2.requestHandlerDict = local.cms2.requestHandlerDict || {};
+        // save pathMethod to requestHandlerDict
+        local.cms2.requestHandlerDict[pathMethod._requestHandlerKey] = pathMethod;
+    });
+});
+// update swaggerJson
+local.utility2.objectSetOverride(
+    local.cms2.swaggerJson,
+    // jsonCopy object to prevent side-effect
+    local.utility2.objectTraverse(local.utility2.jsonCopy(options), function (element) {
+        if (element &amp;&amp; typeof element === 'object') {
+            Object.keys(element).forEach(function (key) {
+                // security - remove private underscored key
+                if (key[0] === '_') {
+                    delete element[key];
+                }
+            });
+        }
+    }),
+    2
+);
+// update swaggerJson.tags
+tmp = {};
+[local.cms2.swaggerJson.tags, options._tags].forEach(function (tags) {
+    (tags || <span class="branch-1 cbranch-no" title="branch not covered" >[])</span>.forEach(function (element) {
+        tmp[element.name] = element;
+    });
+});
+// jsonCopy object to prevent side-effect
+local.utility2.jsonCopy(tmp);
+local.cms2.swaggerJson.tags = Object
+    .keys(tmp)
+    // sort by name
+    .sort()
+    .map(function (key) {
+        return tmp[key];
+    });
+// init properties from x-inheritList
+[0, 1, 2, 3].forEach(function () {
+    Object.keys(local.cms2.swaggerJson.definitions).forEach(function (model) {
+        model = local.cms2.swaggerJson.definitions[model];
+        // jsonCopy object to prevent side-effec
+        local.utility2.jsonCopy(model['x-inheritList'] || [])
+            .reverse()
+            .forEach(function (element) {
+                local.utility2.objectSetDefault(model, {
+                    properties: (local.cms2.modelDereference(element.$ref) || <span class="branch-1 cbranch-no" title="branch not covered" >{})</span>.properties
+                }, 2);
+            });
+    });
+});
+/* jslint-indent-end */
+&nbsp;
+&nbsp;
+&nbsp;
+        };
+&nbsp;
+        local.cms2.middleware = function (request, response, nextMiddleware) {
+            /*
+                this function will run the main swagger middleware
+            */
+&nbsp;
+&nbsp;
+&nbsp;
+/* jslint-indent-begin 12 */
+/*jslint maxlen: 108, regexp: true*/
+var modeNext, onNext, onTaskEnd, swagger, tmp;
+modeNext = 0;
+onNext = function (error) {
+    try {
+        modeNext = error instanceof Error
+            ? <span class="branch-0 cbranch-no" title="branch not covered" >NaN</span>
+            : modeNext + 1;
+        switch (modeNext) {
+        case 1:
+            // serve builtin assets
+            switch (request.urlParsed.pathnameNormalized) {
+            case '/assets/utility2.css':
+            case '/assets/utility2.js':
+                response.end(local.utility2[request.urlParsed.pathnameNormalized]);
+                return;
+            case '/assets/cms2.js':
+            case '/assets/swagger-ui.html':
+            case '/assets/swagger-ui.rollup.css':
+            case '/assets/swagger-ui.rollup.js':
+            case '/assets/swagger-ui.explorer_icons.png':
+            case '/assets/swagger-ui.logo_small.png':
+            case '/assets/swagger-ui.throbber.gif':
+                response.end(local.cms2[request.urlParsed.pathnameNormalized]);
+                return;
+            default:
+                onNext();
+            }
+            break;
+        case 2:
+            if (request.urlParsed.pathnameNormalized
+                    .indexOf(local.cms2.swaggerJson.basePath) === 0) {
+                tmp = request.urlParsed.pathnameNormalized
+                    .replace(local.cms2.swaggerJson.basePath, '');
+                switch (tmp) {
+                // serve swagger.json
+                case '/swagger.json':
+<span class="cstat-no" title="statement not covered" >                    response.end(local.utility2.jsonStringifyOrdered(local.cms2.swaggerJson));</span>
+<span class="cstat-no" title="statement not covered" >                    return;</span>
+                }
+                // lookup swagger request-handler from requestHandlerDict
+                while (true) {
+                    swagger = swagger || local.cms2.requestHandlerDict[tmp];
+                    <span class="missing-if-branch" title="else path not taken" >E</span>if (swagger || <span class="branch-1 cbranch-no" title="branch not covered" >!(/[^\/]/).test(tmp))</span> {
+                        break;
+                    }
+<span class="cstat-no" title="statement not covered" >                    tmp = tmp.replace((/[^\/]+(\/*)$/), '$1');</span>
+                }
+            }
+            // if 404, then run nextMiddleware
+            if (!swagger) {
+                nextMiddleware();
+                return;
+            }
+            // save _requestHandler
+            tmp = swagger._requestHandler;
+            // jsonCopy object to prevent side-effect
+            swagger = request.swagger = local.utility2.jsonCopy(swagger);
+            global.swagger = swagger; //debugPrint
+            // restore _requestHandler
+            swagger._requestHandler = tmp;
+            swagger.model = local.cms2.modelDict[swagger._modelName];
+            onNext();
+            break;
+        case 3:
+            onTaskEnd = local.utility2.onTaskEnd(onNext);
+            onTaskEnd.counter += 1;
+            // init paramDict
+            swagger.paramDict = {};
+            // parse path param
+            tmp = request.urlParsed.pathname
+                .replace(local.cms2.swaggerJson.basePath, '')
+                .split('/');
+            swagger._path.split('/').forEach(function (key, ii) {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if ((/^\{\S*?\}$/).test(key)) {
+<span class="cstat-no" title="statement not covered" >                    swagger.paramDict[key.slice(1, -1)] = tmp[ii];</span>
+                }
+            });
+            (swagger.parameters || <span class="branch-1 cbranch-no" title="branch not covered" >[])</span>.forEach(function (param) {
+                switch (param.in) {
+                // parse body param
+<span class="branch-0 cbranch-no" title="branch not covered" >                case 'body':</span>
+<span class="cstat-no" title="statement not covered" >                    onTaskEnd.counter += 1;</span>
+<span class="cstat-no" title="statement not covered" >                    local.utility2.streamReadAll(request, <span class="fstat-no" title="function not covered" >function (error, data) {</span></span>
+<span class="cstat-no" title="statement not covered" >                        swagger.paramDict[param.name] = String(data);</span>
+<span class="cstat-no" title="statement not covered" >                        onTaskEnd(error);</span>
+                    });
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+                // parse header param
+<span class="branch-1 cbranch-no" title="branch not covered" >                case 'header':</span>
+<span class="cstat-no" title="statement not covered" >                    swagger.paramDict[param.name] = request.headers[param.name];</span>
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+                // parse query param
+                case 'query':
+                    swagger.paramDict[param.name] = request.urlParsed.query[param.name];
+                    break;
+                }
+                // init default param
+                swagger.paramDict[param.name] = swagger.paramDict[param.name] || param.default;
+            });
+            onTaskEnd();
+            break;
+        case 4:
+            // parse paramDict
+            swagger.parameters.forEach(function (param) {
+                // validate param
+                swagger.paramDict[param.name] = local.cms2.modelValidateProperty({
+                    data: swagger.paramDict[param.name],
+                    key: 'param.' + param.name,
+                    parse: true,
+                    property: param,
+                    required: param.required
+                });
+            });
+            // rename id to _id
+            local.cms2.modelNormalizeIdMongodb(swagger.paramDict);
+            // init responseData
+            // http://jsonapi.org/format/#document-structure-resource-objects
+            local.utility2.objectSetDefault(swagger, { responseData: { data: [{
+                _id: swagger.paramDict._id ||
+                    (swagger.paramDict.body &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >swagger.paramDict.body._id)</span> ||
+                    local.utility2.uuidTime(),
+                id: swagger.paramDict.type ||
+                    (swagger.paramDict.body &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >swagger.paramDict.body.type)</span>
+            }] } }, -1);
+            // init _id
+            swagger.responseData.data[0]._id =
+                swagger.responseData.data[0]._id || <span class="branch-1 cbranch-no" title="branch not covered" >local.utility2.uuidTime();</span>
+            // get previously saved data
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (swagger.model) {
+                swagger.model.collection.findOne({
+                    _id: swagger.responseData.data[0]._id
+                }, function (error, dataPrevious) {
+                    // jslint-hack
+                    local.utility2.nop(error);
+                    swagger.dataPrevious = dataPrevious || {};
+                    onNext();
+                });
+                return;
+            }
+<span class="cstat-no" title="statement not covered" >            onNext();</span>
+<span class="cstat-no" title="statement not covered" >            break;</span>
+        case 5:
+            // run middlewareHookBefore
+            local.cms2.middlewareHookBefore(request, response, onNext);
+            break;
+        case 6:
+            // run _requestHandler
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (swagger._requestHandler) {
+                swagger._requestHandler(request, response, onNext);
+                return;
+            }
+<span class="cstat-no" title="statement not covered" >            onNext();</span>
+<span class="cstat-no" title="statement not covered" >            break;</span>
+        case 7:
+            // run middlewareHookAfter
+            local.cms2.middlewareHookAfter(request, response, onNext);
+            break;
+        case 8:
+            // end response
+            response.end(JSON.stringify(
+                // rename _id to id
+                local.cms2.modelNormalizeIdSwagger(
+                    // jsonCopy object to prevent side-effect
+                    local.utility2.jsonCopy(swagger.responseData)
+                )
+            ));
+            break;
+<span class="branch-8 cbranch-no" title="branch not covered" >        default:</span>
+<span class="cstat-no" title="statement not covered" >            local.cms2.middlewareError(error, request, response, nextMiddleware);</span>
+        }
+    } catch (errorCaught) {
+<span class="cstat-no" title="statement not covered" >        local.cms2.middlewareError(errorCaught, request, response, nextMiddleware);</span>
+    }
+};
+onNext();
+/* jslint-indent-end */
+&nbsp;
+&nbsp;
+&nbsp;
+        };
+&nbsp;
+        local.cms2.middlewareCrudDefault = function (request, response, nextMiddleware) {
+            /*
+                this function will run default swagger crud operations
+            */
+            var modeNext, onNext, swagger;
+            modeNext = 0;
+            onNext = function (error, data) {
+                try {
+                    modeNext = error instanceof Error
+                        ? <span class="branch-0 cbranch-no" title="branch not covered" >NaN</span>
+                        : modeNext + 1;
+                    switch (modeNext) {
+                    case 1:
+                        // jslint-hack
+                        local.utility2.nop(response);
+                        swagger = request.swagger;
+                        // init data
+                        data = swagger.responseData.data[0];
+                        switch (swagger.operationId) {
+<span class="branch-0 cbranch-no" title="branch not covered" >                        case 'createOne':</span>
+<span class="branch-1 cbranch-no" title="branch not covered" >                        case 'replaceOrCreateOne':</span>
+                            // update data from body
+<span class="cstat-no" title="statement not covered" >                            local.utility2.objectSetOverride(data, swagger.paramDict.body);</span>
+                            // normalize data
+<span class="cstat-no" title="statement not covered" >                            local.cms2.modelNormalize({</span>
+                                data: data,
+                                dataPrevious: swagger.dataPrevious
+                            });
+                            // validate data
+<span class="cstat-no" title="statement not covered" >                            local.cms2.modelValidate({</span>
+                                data: data,
+                                key: swagger._modelName,
+                                model: swagger.model
+                            });
+<span class="cstat-no" title="statement not covered" >                            onNext(null, data);</span>
+<span class="cstat-no" title="statement not covered" >                            break;</span>
+<span class="branch-2 cbranch-no" title="branch not covered" >                        case 'deleteByIdOne':</span>
+<span class="cstat-no" title="statement not covered" >                            modeNext = NaN;</span>
+<span class="cstat-no" title="statement not covered" >                            swagger.model.collection.removeOne({ _id: data._id }, onNext);</span>
+<span class="cstat-no" title="statement not covered" >                            break;</span>
+<span class="branch-3 cbranch-no" title="branch not covered" >                        case 'getByIdOne':</span>
+<span class="cstat-no" title="statement not covered" >                            swagger.model.collection.findOne({ _id: data._id }, onNext);</span>
+<span class="cstat-no" title="statement not covered" >                            break;</span>
+                        case 'getByQueryMany':
+                            swagger.model.collection
+                                .find(debugPrint(swagger.paramDict.query))
+                                .limit(swagger.paramDict.limit)
+                                .sort(swagger.paramDict.sort)
+                                .toArray(onNext);
+                            break;
+<span class="branch-5 cbranch-no" title="branch not covered" >                        case 'updateOrCreateOne':</span>
+                            // update data from body
+<span class="cstat-no" title="statement not covered" >                            local.utility2.objectSetOverride(data, swagger.paramDict.body);</span>
+                            // normalize data
+<span class="cstat-no" title="statement not covered" >                            local.cms2.modelNormalize({</span>
+                                data: data,
+                                dataPrevious: swagger.dataPrevious
+                            });
+                            // update previously saved data with current data
+<span class="cstat-no" title="statement not covered" >                            swagger.dataUpdated = local.utility2.objectSetOverride(</span>
+                                // jsonCopy object to prevent side-effect
+                                local.utility2.jsonCopy(swagger.dataPrevious),
+                                data
+                            );
+                            // validate updated data
+<span class="cstat-no" title="statement not covered" >                            local.cms2.modelValidate({</span>
+                                data: swagger.dataUpdated,
+                                key: swagger._modelName,
+                                model: swagger.model
+                            });
+<span class="cstat-no" title="statement not covered" >                            onNext(null, data);</span>
+<span class="cstat-no" title="statement not covered" >                            break;</span>
+<span class="branch-6 cbranch-no" title="branch not covered" >                        default:</span>
+<span class="cstat-no" title="statement not covered" >                            throw new Error('invalid crud operation - ' +</span>
+                                request.method + ' ' + request.url);
+                        }
+                        break;
+                    case 2:
+                        switch (swagger.operationId) {
+<span class="branch-0 cbranch-no" title="branch not covered" >                        case 'createOne':</span>
+<span class="cstat-no" title="statement not covered" >                            modeNext = NaN;</span>
+                            // insert data
+<span class="cstat-no" title="statement not covered" >                            swagger.model.collection.insert(data, onNext);</span>
+<span class="cstat-no" title="statement not covered" >                            break;</span>
+<span class="branch-1 cbranch-no" title="branch not covered" >                        case 'replaceOrCreateOne':</span>
+<span class="cstat-no" title="statement not covered" >                            modeNext = NaN;</span>
+                            // upsert data
+<span class="cstat-no" title="statement not covered" >                            swagger.model.collection.update(</span>
+                                { _id: data._id },
+                                { $set: data },
+                                { upsert: true },
+                                onNext
+                            );
+<span class="cstat-no" title="statement not covered" >                            break;</span>
+<span class="branch-2 cbranch-no" title="branch not covered" >                        case 'getByIdOne':</span>
+                        case 'getByQueryMany':
+                            modeNext = NaN;
+                            swagger.responseData.data = data;
+                            onNext();
+                            break;
+<span class="branch-4 cbranch-no" title="branch not covered" >                        case 'updateOrCreateOne':</span>
+<span class="cstat-no" title="statement not covered" >                            modeNext = NaN;</span>
+                            // init responseData.data[0]
+<span class="cstat-no" title="statement not covered" >                            swagger.responseData.data[0] = swagger.dataUpdated;</span>
+                            // upsert data
+<span class="cstat-no" title="statement not covered" >                            swagger.model.collection.update(</span>
+                                { _id: data._id },
+                                data,
+                                { upsert: true },
+                                onNext
+                            );
+<span class="cstat-no" title="statement not covered" >                            break;</span>
+                        }
+                        break;
+                    default:
+                        local.utility2.objectSetOverride(swagger.responseData, {
+                            meta: data
+                        }, 2);
+                        nextMiddleware(error);
+                    }
+                } catch (errorCaught) {
+<span class="cstat-no" title="statement not covered" >                    nextMiddleware(errorCaught);</span>
+                }
+            };
+            onNext();
+        };
+&nbsp;
+        local.cms2.middlewareError = <span class="fstat-no" title="function not covered" >function (error, request, response, nextMiddleware) {</span>
+            /*
+                this function will handle errors according to http://jsonapi.org/format/#errors
+            */
+<span class="cstat-no" title="statement not covered" >            local.utility2.onErrorDefault(error);</span>
+<span class="cstat-no" title="statement not covered" >            if (!error) {</span>
+<span class="cstat-no" title="statement not covered" >                nextMiddleware();</span>
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            local.utility2.serverRespondSetHead(request, response, 500, {});</span>
+            // rename _id to id
+<span class="cstat-no" title="statement not covered" >            response.end(JSON.stringify(local.cms2.modelNormalizeIdSwagger({ errors: [{</span>
+                _id: request &amp;&amp;
+                    request.swagger &amp;&amp;
+                    request.swagger.responseData &amp;&amp;
+                    request.swagger.responseData._id,
+                code: error.code,
+                title: error.message,
+                detail: error.stack,
+                status: response.statusCode
+            }] })));
+        };
+&nbsp;
+        local.cms2.middlewareHookAfterList = [];
+&nbsp;
+        local.cms2.middlewareHookAfter = <span class="fstat-no" title="function not covered" >function (request, response, nextMiddleware) {</span>
+            /*
+               this function will run any hooks after the main swagger api
+            */
+<span class="cstat-no" title="statement not covered" >            var modeNext, onNext;</span>
+<span class="cstat-no" title="statement not covered" >            modeNext = -1;</span>
+<span class="cstat-no" title="statement not covered" >            onNext = <span class="fstat-no" title="function not covered" >function (error) {</span></span>
+<span class="cstat-no" title="statement not covered" >                modeNext = error instanceof Error</span>
+                    ? NaN
+                    : modeNext + 1;
+<span class="cstat-no" title="statement not covered" >                if (modeNext &lt; local.cms2.middlewareHookAfterList.length) {</span>
+<span class="cstat-no" title="statement not covered" >                    local.cms2</span>
+                        .middlewareHookAfterList[modeNext](request, response, onNext);
+<span class="cstat-no" title="statement not covered" >                    return;</span>
+                }
+                // default to nextMiddleware
+<span class="cstat-no" title="statement not covered" >                nextMiddleware(error);</span>
+            };
+<span class="cstat-no" title="statement not covered" >            onNext();</span>
+        };
+&nbsp;
+        local.cms2.middlewareHookAfter = function (request, response, nextMiddleware) {
+            /*
+               this function will run any hooks before the main swagger api
+            */
+            // jslint-hack
+            local.utility2.nop(request, response);
+            nextMiddleware();
+        };
+&nbsp;
+        local.cms2.middlewareHookBefore = function (request, response, nextMiddleware) {
+            /*
+               this function will run any hooks after the main swagger api
+            */
+            // jslint-hack
+            local.utility2.nop(request, response);
+            nextMiddleware();
+        };
+        break;
+    }
+    switch (local.modeJs) {
+&nbsp;
+&nbsp;
+&nbsp;
+    // run node js-env code
+    case 'node':
+        // init mongodb client
+        local.utility2.onReady.counter += 1;
+        local.utility2.taskCacheCreateOrAddCallback(
+            { key: 'cms2.mongodbConnect' },
+            function (onError) {
+                local.mongodb.MongoClient.connect(
+                    process.env.npm_config_mongodb_url || 'mongodb://localhost:27017/test',
+                    function (error, db) {
+                        // validate no error occurred
+                        local.utility2.assert(!error, error);
+                        local.cms2.db = db;
+                        onError();
+                        local.utility2.onReady();
+                    }
+                );
+            },
+            local.utility2.nop
+        );
+        // init assets
+        local.cms2['/assets/cms2.js'] = local.fs
+            .readFileSync(__filename, 'utf8');
+        local.cms2.swaggerJson = {
+            basePath: local.utility2.envDict.npm_config_mode_api_prefix || '/api/v0.1',
+            definitions: {
+                // http://jsonapi.org/format/#errors
+                JsonApiError: {
+                    properties: {
+                        code: { type: 'string' },
+                        detail: { type: 'string' },
+                        href: { type: 'string' },
+                        id: { type: 'string' },
+                        links: {
+                            items: { type: 'string' },
+                            type: 'array'
+                        },
+                        paths: {
+                            items: { type: 'string' },
+                            type: 'array'
+                        },
+                        status: { type: 'integer' },
+                        title: { type: 'string' }
+                    }
+                },
+                // http://jsonapi.org/format/#document-structure-meta
+                JsonApiMeta: {
+                    properties: {}
+                },
+                // http://jsonapi.org/format/#document-structure-meta
+                JsonApiLinks: {
+                    properties: {
+                        self: { type: 'string' },
+                        related: { type: 'string' }
+                    }
+                },
+                // http://jsonapi.org/format/#document-structure-resource-objects
+                JsonApiResource: {
+                    properties: {
+                        _aliasOf: { type: 'string' },
+                        _aliasType: { type: 'string' },
+                        _timeCreated: { format: 'date-time', type: 'string' },
+                        _timeModified: { format: 'date-time', type: 'string' },
+                        parentId: { type: 'string' },
+                        id: { type: 'string' },
+                        subtype: { type: 'string' },
+                        type: { type: 'string' }
+                    }
+                },
+                // http://jsonapi.org/format/#document-structure-top-level
+                JsonApiResponseData: {
+                    properties: {
+                        data: {
+                            items: { $ref: '#/definitions/JsonApiResource' },
+                            type: 'array'
+                        },
+                        included: {
+                            items: { $ref: '#/definitions/JsonApiResource' },
+                            type: 'array'
+                        },
+                        links: { $ref: '#/definitions/JsonApiLinks' },
+                        meta: { $ref: '#/definitions/JsonApiMeta' }
+                    }
+                },
+                // http://jsonapi.org/format/#document-structure-top-level
+                JsonApiResponseError: {
+                    properties: {
+                        errors: {
+                            items: { $ref: '#/definitions/JsonApiError' },
+                            type: 'array'
+                        }
+                    }
+                }
+            },
+            info: {
+                description: 'demo of cms2 swagger-api',
+                title: 'cms2 api',
+                version: '0.1'
+            },
+            paths: {},
+            swagger: '2.0',
+            tags: []
+        };
+        local.cms2['/assets/swagger-ui.html'] = local.fs
+            .readFileSync(
+                local.swagger_ui_lite.__dirname + '/swagger-ui.html',
+                'utf8'
+            )
+            .replace(
+                'http://petstore.swagger.io/v2/swagger.json',
+                local.cms2.swaggerJson.basePath + '/swagger.json'
+            );
+        local.cms2['/assets/swagger-ui.rollup.css'] = local.fs
+            .readFileSync(
+                local.swagger_ui_lite.__dirname + '/swagger-ui.rollup.css',
+                'utf8'
+            );
+        local.cms2['/assets/swagger-ui.rollup.js'] = local.fs
+            .readFileSync(
+                local.swagger_ui_lite.__dirname + '/swagger-ui.rollup.js',
+                'utf8'
+            )
+            // hack add object type
+            .replace('var str;', 'var str = type === "object" ? "object" : undefined;');
+        local.cms2['/assets/swagger-ui.explorer_icons.png'] = local.fs
+            .readFileSync(local.swagger_ui_lite.__dirname +
+                '/swagger-ui.explorer_icons.png');
+        local.cms2['/assets/swagger-ui.logo_small.png'] = local.fs
+            .readFileSync(local.swagger_ui_lite.__dirname +
+                '/swagger-ui.logo_small.png');
+        local.cms2['/assets/swagger-ui.throbber.gif'] = local.fs
+            .readFileSync(local.swagger_ui_lite.__dirname +
+                '/swagger-ui.throbber.gif');
+        // init ContentDraft model
+        local.cms2.modelCreate({
+            _collectionName: 'ContentDraft',
+            _crudDefault: true,
+            _modelName: 'ContentDraft',
+            _tags: [{ description: 'draft content', name: 'ContentDraft' }],
+            definitions: {
+                ContentDraft: {
+                    properties: {
+                        content: { type: 'string' },
+                        summary: { type: 'string' },
+                        title: { type: 'string' }
+                    },
+                    'x-inheritList': [{ $ref: '#/definitions/JsonApiResource' }]
+                }
+            }
+        });
+        // init ContentHistory model
+        local.cms2.modelCreate({
+            _collectionName: 'ContentHistory',
+            _crudDefault: true,
+            _modelName: 'ContentHistory',
+            _tags: [{ description: 'history of published content', name: 'ContentHistory' }],
+            definitions: {
+                ContentHistory: {
+                    properties: {
+                        _contentId: { type: 'string' },
+                        _version: { type: 'integer' }
+                    },
+                    'x-inheritList': [{ $ref: '#/definitions/ContentDraft' }]
+                }
+            }
+        });
+        // init ContentPublish model
+        local.cms2.modelCreate({
+            _collectionName: 'ContentPublish',
+            _crudDefault: true,
+            _modelName: 'ContentPublish',
+            _tags: [{ description: 'published content', name: 'ContentPublish' }],
+            definitions: {
+                ContentPublish: {
+                    'x-inheritList': [{ $ref: '#/definitions/ContentDraft' }]
+                }
+            }
+        });
+        // init User model
+        local.cms2.modelCreate({
+            _collectionName: 'User',
+            _crudDefault: true,
+            _modelName: 'User',
+            _tags: [{ description: 'user api', name: 'User' }],
+            definitions: {
+                User: {
+                    properties: {
+                        email: { default: 'john@example.com', type: 'string' },
+                        roleList: {
+                            items: { default: 'guest', type: 'string' },
+                            type: 'array'
+                        },
+                        passwordHash: {
+                            default: '00000000-0000-0000-0000-000000000000',
+                            type: 'string'
+                        },
+                        passwordSalt: {
+                            default: '00000000-0000-0000-0000-000000000000',
+                            type: 'string'
+                        },
+                        username: { default: 'john', type: 'string' }
+                    },
+                    'x-inheritList': [{ $ref: '#/definitions/JsonApiResource' }]
+                }
+            },
+            paths: {
+                '/User/login': {
+                    put: {
+                        parameters: [{
+                            description: 'login username',
+                            in: 'header',
+                            name: 'username',
+                            required: true,
+                            type: 'string'
+                        }, {
+                            description: 'login password',
+                            in: 'header',
+                            name: 'password',
+                            required: true,
+                            type: 'string'
+                        }],
+                        summary: 'login user to new session',
+                        tags: ['User']
+                    }
+                },
+                '/User/logout': {
+                    delete: {
+                        parameters: [{
+                            description: 'logout sessionId',
+                            in: 'query',
+                            name: 'sessionId',
+                            required: true,
+                            type: 'string'
+                        }],
+                        summary: 'logout user from existing session',
+                        tags: ['User']
+                    }
+                }
+            }
+        });
+        local.utility2.objectSetOverride(local.swagger_tools.v2.validators[
+            'schema.json'
+        ].cache['schema.json'], {
+            definitions: {
+                queryParameterSubSchema: {
+                    properties: {
+                        type: {
+                            // hack swagger-tools.validate to allow object type
+                            enum: ['string', 'number', 'boolean', 'integer', 'array', 'object']
+                        }
+                    }
+                }
+            }
+        }, -1);
+        local.utility2.taskCacheCreateOrAddCallback({
+            key: 'utility2.onReady'
+        }, null, function () {
+            // validate swaggerJson
+            local.swagger_tools.v2
+                .validate(local.cms2.swaggerJson, function (error, result) {
+                    <span class="missing-if-branch" title="if path not taken" >I</span>if (error) {
+<span class="cstat-no" title="statement not covered" >                        local.utility2.onErrorDefault(error);</span>
+<span class="cstat-no" title="statement not covered" >                        return;</span>
+                    }
+                    local._debugSwaggerJsonError = result;
+                    (result &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >result.errors </span>&amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >result.errors.length</span>
+                        ? <span class="branch-0 cbranch-no" title="branch not covered" >result.errors</span>
+                        : result &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >result.warnings </span>&amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >result.warning.lengh</span>
+                        ? <span class="branch-0 cbranch-no" title="branch not covered" >result.warnings</span>
+                        : []).slice(0, 4).forEach(<span class="fstat-no" title="function not covered" >function (element) {</span>
+<span class="cstat-no" title="statement not covered" >                        console.error('swagger schema - ' + element.code + ' - ' +</span>
+                            element.message + ' - ' + JSON.stringify(element.path));
+                    });
+                });
+            //debugprint
+            //!! local.utility2.ajax({
+                //!! data: JSON.stringify({
+                    //!! _id: 'foo',
+                    //!! content: '1'
+                //!! }),
+                //!! method: 'PUT',
+                //!! url: '/api/v0.1/ContentDraft/updateOrCreateOne'
+            //!! }, debugPrint);
+            local.utility2.ajax({
+                method: 'GET',
+                url: '/api/v0.1/ContentDraft/getByQueryMany?limit=1&amp;projection={}'
+            }, debugPrint);
+        });
+        // init user roles
+        local.cms2.userRoleDict = {
+            'render': 10,
+            'guest': 20,
+            'user': 30,
+            'contributor': 40,
+            'author': 50,
+            'editor': 60,
+            'manager': 70,
+            'admin': 80,
+            'root': 90
+        };
+        break;
+    }
+}((function () {
+    'use strict';
+    var local;
+&nbsp;
+&nbsp;
+&nbsp;
+    // run shared js-env code
+    (function () {
+        // init local
+        local = {};
+        local.modeJs = (function () {
+            try {
+                return module.exports &amp;&amp;
+                    typeof process.versions.node === 'string' &amp;&amp;
+                    typeof require('http').createServer === 'function' &amp;&amp;
+                    'node';
+            } catch (errorCaughtNode) {
+<span class="cstat-no" title="statement not covered" >                return typeof navigator.userAgent === 'string' &amp;&amp;</span>
+                    typeof document.querySelector('body') === 'object' &amp;&amp;
+                    'browser';
+            }
+        }());
+        // init global
+        local.global = local.modeJs === 'browser'
+            ? <span class="branch-0 cbranch-no" title="branch not covered" >window</span>
+            : global;
+        // init cms2
+        local.cms2 = { local: local };
+    }());
+    switch (local.modeJs) {
+&nbsp;
+&nbsp;
+&nbsp;
+    // run browser js-env code
+<span class="branch-0 cbranch-no" title="branch not covered" >    case 'browser':</span>
+        // export cms2
+<span class="cstat-no" title="statement not covered" >        window.cms2 = local.cms2;</span>
+        // require modules
+<span class="cstat-no" title="statement not covered" >        local.utility2 = window.utility2;</span>
+<span class="cstat-no" title="statement not covered" >        break;</span>
+&nbsp;
+&nbsp;
+&nbsp;
+    // run node js-env code
+    case 'node':
+        // export cms2
+        module.exports = local.cms2;
+        // require modules
+        local.fs = require('fs');
+        local.mongodb = require('mongodb');
+        local.path = require('path');
+        local.swagger_tools = require('swagger-ui-lite/swagger-tools-standalone-min.js');
+        local.swagger_ui_lite = require('swagger-ui-lite');
+        local.url = require('url');
+        local.utility2 = require('utility2');
+        break;
+    }
+    return local;
+}())));
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Apr 18 2015 16:26:58 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>
