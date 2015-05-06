@@ -15,7 +15,7 @@
     <h1>Code coverage report for <span class="entity">node-cms2/test.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">100% <small>(72 / 72)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(73 / 73)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">100% <small>(23 / 23)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -24,7 +24,7 @@
         Functions: <span class="metric">100% <small>(14 / 14)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">100% <small>(72 / 72)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(73 / 73)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -279,7 +279,18 @@
 245
 246
 247
-248</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -437,6 +448,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -450,7 +471,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">30</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -463,7 +485,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">30</span>
+<span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -678,14 +700,24 @@
             tags: [{ description: 'published content', name: 'ContentPublish' }]
         });
         // init assets
-        local.utility2.cacheDict.assets['/'] = local.utility2.stringFormat(local.fs
-            .readFileSync(__dirname + '/README.md', 'utf8')
-            .replace((/[\S\s]+?(&lt;!DOCTYPE html&gt;[\S\s]+?&lt;\/html&gt;)[\S\s]+/), '$1')
-            // parse '\' line-continuation
-            .replace((/\\\n/g), '')
-            .replace((/\\n' \+(\s*?)'/g), '$1'), { envDict: local.utility2.envDict }, '');
-        local.utility2.cacheDict.assets['/test/test.js'] = local.utility2.istanbul_lite
-            .instrumentInPackage(
+        local.utility2.cacheDict.assets['/'] =
+            local.utility2.cacheDict.assets['/test/test.html'] =
+            local.utility2.stringFormat(local.fs
+                .readFileSync(__dirname + '/README.md', 'utf8')
+                // extract html
+                .replace((/[\S\s]+?(&lt;!DOCTYPE html&gt;[\S\s]+?&lt;\/html&gt;)[\S\s]+/), '$1')
+                // parse '\' line-continuation
+                .replace((/\\\n/g), '')
+                // remove "\\n' +" and "'"
+                .replace((/\\n' \+(\s*?)'/g), '$1'), { envDict: local.utility2.envDict }, '');
+        local.utility2.cacheDict.assets['/assets/cms2.js'] =
+            local.utility2.istanbul_lite.instrumentInPackage(
+                local.cms2['/assets/cms2.js'],
+                __dirname + '/index.js',
+                'cms2'
+            );
+        local.utility2.cacheDict.assets['/test/test.js'] =
+            local.utility2.istanbul_lite.instrumentInPackage(
                 local.fs.readFileSync(__filename, 'utf8'),
                 __filename,
                 'cms2'
@@ -693,6 +725,7 @@
         // init middleware
         local.middleware = local.utility2.middlewareGroupCreate([
             local.utility2.middlewareInit,
+            local.utility2.middlewareAssetsCached,
             function (request, response, nextMiddleware) {
                 /*
                     this function will run the test-middleware
@@ -712,8 +745,8 @@
                 // default to nextMiddleware
                 nextMiddleware();
             },
-            local.utility2.middlewareAssetsCached
-        ].concat([local.cms2.middleware]));
+            local.cms2.middleware
+        ]);
         // init middleware error-handler
         local.onMiddlewareError = local.utility2.onMiddlewareError;
         // run server-test
@@ -777,7 +810,7 @@
 </table></pre>
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed May 06 2015 16:54:59 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed May 06 2015 18:25:41 GMT+0000 (UTC)</div>
 </div>
 </body>
 </html>
