@@ -17,7 +17,7 @@ branches:
 env:
     global:
     # this value is auto-created by shTravisCryptoAesEncryptYml
-    - secure: SwIKTowsk+s8gs1qOPvSXWsfH9wkYJgsGAyovMglM8fHF4jmGQkfZo3d8ZTu/6tFuq607p/0+1ODKQ19eunq632NCstjSyBCrmFBiJR6ED02Jos6hwpQxAn5OdYoZCRgwtkOvR5nAui7Bz21Xe95WkVe65pcmHcxjDPHSYxhV04= # CRYPTO_AES_KEY
+    - secure: HVM+9b8RZQWzZ4F2OCcDgVOUxxF41zPrRdH32qgWJKNNaLRade9pqNxdD7RzAY3ObomUfvaI6o3mCx5trTyQMOo2jx0nALVVg1VhHUaTL4NPxg62HE2TlW1B6HXiLvEJ4d1M52TUYwijHuFQDo9z92Kl9w6CDK1RcbKnPluRidA= # CRYPTO_AES_KEY
 language:
     - node_js
 node_js:
