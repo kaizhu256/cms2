@@ -1,6 +1,6 @@
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
-    "description": "openid app",
+    "description": "cms2 app",
     "devDependencies": {
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "utility2": "kaizhu256/node-utility2#alpha"
@@ -8,20 +8,20 @@
     "engines": {
         "node": ">=4.0"
     },
-    "homepage": "https://github.com/kaizhu256/node-openid-lite",
+    "homepage": "https://github.com/kaizhu256/node-cms2",
     "keywords": [],
     "license": "MIT",
-    "main": "lib.openid.js",
-    "name": "openid-lite",
-    "nameLib": "openid",
-    "nameOriginal": "openid-lite",
+    "main": "lib.cms2.js",
+    "name": "cms2",
+    "nameLib": "cms2",
+    "nameOriginal": "cms2",
     "os": [
         "darwin",
         "linux"
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/kaizhu256/node-openid-lite.git"
+        "url": "https://github.com/kaizhu256/node-cms2.git"
     },
     "scripts": {
         "build-ci": "utility2 shReadmeTest build_ci.sh",

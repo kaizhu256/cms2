@@ -1,4 +1,4 @@
-/* istanbul instrument in package openid */
+/* istanbul instrument in package cms2 */
 /*jslint
     bitwise: true,
     browser: true,

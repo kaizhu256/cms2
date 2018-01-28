@@ -1,4 +1,4 @@
-/* istanbul instrument in package openid */
+/* istanbul instrument in package cms2 */
 /*jslint
     bitwise: true,
     browser: true,
@@ -48,7 +48,7 @@
         }
         // init exports
         if (local.modeJs === 'browser') {
-            local.global.utility2_openid = local;
+            local.global.utility2_cms2 = local;
         } else {
             // require builtins
             Object.keys(process.binding('natives')).forEach(function (key) {
@@ -60,6 +60,6 @@
             module.exports.__dirname = __dirname;
         }
         // init lib
-        local.local = local.openid = local;
+        local.local = local.cms2 = local;
     }());
 }());

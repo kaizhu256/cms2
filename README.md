@@ -1,29 +1,29 @@
-# openid-lite
-openid app
+# cms2
+cms2 app
 
 # live web demo
-- [https://kaizhu256.github.io/node-openid-lite/build..beta..travis-ci.org/app](https://kaizhu256.github.io/node-openid-lite/build..beta..travis-ci.org/app)
+- [https://kaizhu256.github.io/node-cms2/build..beta..travis-ci.org/app](https://kaizhu256.github.io/node-cms2/build..beta..travis-ci.org/app)
 
-[![screenshot](https://kaizhu256.github.io/node-openid-lite/build/screenshot.deployGithub.browser.%252Fnode-openid-lite%252Fbuild%252Fapp.png)](https://kaizhu256.github.io/node-openid-lite/build..beta..travis-ci.org/app)
+[![screenshot](https://kaizhu256.github.io/node-cms2/build/screenshot.deployGithub.browser.%252Fnode-cms2%252Fbuild%252Fapp.png)](https://kaizhu256.github.io/node-cms2/build..beta..travis-ci.org/app)
 
 
 
-[![travis-ci.org build-status](https://api.travis-ci.org/kaizhu256/node-openid-lite.svg)](https://travis-ci.org/kaizhu256/node-openid-lite) [![coverage](https://kaizhu256.github.io/node-openid-lite/build/coverage.badge.svg)](https://kaizhu256.github.io/node-openid-lite/build/coverage.html/index.html) [![snyk.io vulnerabilities](https://snyk.io/test/github/kaizhu256/node-openid-lite/badge.svg)](https://snyk.io/test/github/kaizhu256/node-openid-lite)
+[![travis-ci.org build-status](https://api.travis-ci.org/kaizhu256/node-cms2.svg)](https://travis-ci.org/kaizhu256/node-cms2) [![coverage](https://kaizhu256.github.io/node-cms2/build/coverage.badge.svg)](https://kaizhu256.github.io/node-cms2/build/coverage.html/index.html) [![snyk.io vulnerabilities](https://snyk.io/test/github/kaizhu256/node-cms2/badge.svg)](https://snyk.io/test/github/kaizhu256/node-cms2)
 
-[![NPM](https://nodei.co/npm/openid-lite.png?downloads=true)](https://www.npmjs.com/package/openid-lite)
+[![NPM](https://nodei.co/npm/cms2.png?downloads=true)](https://www.npmjs.com/package/cms2)
 
-[![build commit status](https://kaizhu256.github.io/node-openid-lite/build/build.badge.svg)](https://travis-ci.org/kaizhu256/node-openid-lite)
+[![build commit status](https://kaizhu256.github.io/node-cms2/build/build.badge.svg)](https://travis-ci.org/kaizhu256/node-cms2)
 
-| git-branch : | [master](https://github.com/kaizhu256/node-openid-lite/tree/master) | [beta](https://github.com/kaizhu256/node-openid-lite/tree/beta) | [alpha](https://github.com/kaizhu256/node-openid-lite/tree/alpha)|
+| git-branch : | [master](https://github.com/kaizhu256/node-cms2/tree/master) | [beta](https://github.com/kaizhu256/node-cms2/tree/beta) | [alpha](https://github.com/kaizhu256/node-cms2/tree/alpha)|
 |--:|:--|:--|:--|
-| test-server-github : | [![github.com test-server](https://kaizhu256.github.io/node-openid-lite/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-openid-lite/build..master..travis-ci.org/app) | [![github.com test-server](https://kaizhu256.github.io/node-openid-lite/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-openid-lite/build..beta..travis-ci.org/app) | [![github.com test-server](https://kaizhu256.github.io/node-openid-lite/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-openid-lite/build..alpha..travis-ci.org/app)|
-| test-report : | [![test-report](https://kaizhu256.github.io/node-openid-lite/build..master..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-openid-lite/build..master..travis-ci.org/test-report.html) | [![test-report](https://kaizhu256.github.io/node-openid-lite/build..beta..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-openid-lite/build..beta..travis-ci.org/test-report.html) | [![test-report](https://kaizhu256.github.io/node-openid-lite/build..alpha..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-openid-lite/build..alpha..travis-ci.org/test-report.html)|
-| coverage : | [![coverage](https://kaizhu256.github.io/node-openid-lite/build..master..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-openid-lite/build..master..travis-ci.org/coverage.html/index.html) | [![coverage](https://kaizhu256.github.io/node-openid-lite/build..beta..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-openid-lite/build..beta..travis-ci.org/coverage.html/index.html) | [![coverage](https://kaizhu256.github.io/node-openid-lite/build..alpha..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-openid-lite/build..alpha..travis-ci.org/coverage.html/index.html)|
-| build-artifacts : | [![build-artifacts](https://kaizhu256.github.io/node-openid-lite/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-openid-lite/tree/gh-pages/build..master..travis-ci.org) | [![build-artifacts](https://kaizhu256.github.io/node-openid-lite/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-openid-lite/tree/gh-pages/build..beta..travis-ci.org) | [![build-artifacts](https://kaizhu256.github.io/node-openid-lite/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-openid-lite/tree/gh-pages/build..alpha..travis-ci.org)|
+| test-server-github : | [![github.com test-server](https://kaizhu256.github.io/node-cms2/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-cms2/build..master..travis-ci.org/app) | [![github.com test-server](https://kaizhu256.github.io/node-cms2/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-cms2/build..beta..travis-ci.org/app) | [![github.com test-server](https://kaizhu256.github.io/node-cms2/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-cms2/build..alpha..travis-ci.org/app)|
+| test-report : | [![test-report](https://kaizhu256.github.io/node-cms2/build..master..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-cms2/build..master..travis-ci.org/test-report.html) | [![test-report](https://kaizhu256.github.io/node-cms2/build..beta..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-cms2/build..beta..travis-ci.org/test-report.html) | [![test-report](https://kaizhu256.github.io/node-cms2/build..alpha..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-cms2/build..alpha..travis-ci.org/test-report.html)|
+| coverage : | [![coverage](https://kaizhu256.github.io/node-cms2/build..master..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-cms2/build..master..travis-ci.org/coverage.html/index.html) | [![coverage](https://kaizhu256.github.io/node-cms2/build..beta..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-cms2/build..beta..travis-ci.org/coverage.html/index.html) | [![coverage](https://kaizhu256.github.io/node-cms2/build..alpha..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-cms2/build..alpha..travis-ci.org/coverage.html/index.html)|
+| build-artifacts : | [![build-artifacts](https://kaizhu256.github.io/node-cms2/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-cms2/tree/gh-pages/build..master..travis-ci.org) | [![build-artifacts](https://kaizhu256.github.io/node-cms2/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-cms2/tree/gh-pages/build..beta..travis-ci.org) | [![build-artifacts](https://kaizhu256.github.io/node-cms2/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-cms2/tree/gh-pages/build..alpha..travis-ci.org)|
 
-[![npmPackageListing](https://kaizhu256.github.io/node-openid-lite/build/screenshot.npmPackageListing.svg)](https://github.com/kaizhu256/node-openid-lite)
+[![npmPackageListing](https://kaizhu256.github.io/node-cms2/build/screenshot.npmPackageListing.svg)](https://github.com/kaizhu256/node-cms2)
 
-![npmPackageDependencyTree](https://kaizhu256.github.io/node-openid-lite/build/screenshot.npmPackageDependencyTree.svg)
+![npmPackageDependencyTree](https://kaizhu256.github.io/node-cms2/build/screenshot.npmPackageDependencyTree.svg)
 
 
 
@@ -41,18 +41,18 @@ openid app
 
 
 # cdn download
-- [https://kaizhu256.github.io/node-openid-lite/build..beta..travis-ci.org/app/assets.openid.js](https://kaizhu256.github.io/node-openid-lite/build..beta..travis-ci.org/app/assets.openid.js)
+- [https://kaizhu256.github.io/node-cms2/build..beta..travis-ci.org/app/assets.cms2.js](https://kaizhu256.github.io/node-cms2/build..beta..travis-ci.org/app/assets.cms2.js)
 
 
 
 # documentation
 #### cli help
-![screenshot](https://kaizhu256.github.io/node-openid-lite/build/screenshot.npmPackageCliHelp.svg)
+![screenshot](https://kaizhu256.github.io/node-cms2/build/screenshot.npmPackageCliHelp.svg)
 
 #### api doc
-- [https://kaizhu256.github.io/node-openid-lite/build..beta..travis-ci.org/apidoc.html](https://kaizhu256.github.io/node-openid-lite/build..beta..travis-ci.org/apidoc.html)
+- [https://kaizhu256.github.io/node-cms2/build..beta..travis-ci.org/apidoc.html](https://kaizhu256.github.io/node-cms2/build..beta..travis-ci.org/apidoc.html)
 
-[![apidoc](https://kaizhu256.github.io/node-openid-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://kaizhu256.github.io/node-openid-lite/build..beta..travis-ci.org/apidoc.html)
+[![apidoc](https://kaizhu256.github.io/node-cms2/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://kaizhu256.github.io/node-cms2/build..beta..travis-ci.org/apidoc.html)
 
 #### todo
 - none
@@ -69,14 +69,14 @@ openid app
 
 # quickstart standalone app
 #### to run this example, follow the instruction in the script below
-- [assets.app.js](https://kaizhu256.github.io/node-openid-lite/build..beta..travis-ci.org/app/assets.app.js)
+- [assets.app.js](https://kaizhu256.github.io/node-cms2/build..beta..travis-ci.org/app/assets.app.js)
 ```shell
 # example.sh
 
-# this shell script will download and run a web-demo of openid-lite as a standalone app
+# this shell script will download and run a web-demo of cms2 as a standalone app
 
 # 1. download standalone app
-curl -O https://kaizhu256.github.io/node-openid-lite/build..beta..travis-ci.org/app/assets.app.js
+curl -O https://kaizhu256.github.io/node-cms2/build..beta..travis-ci.org/app/assets.app.js
 # 2. run standalone app
 PORT=8081 node ./assets.app.js
 # 3. open a browser to http://127.0.0.1:8081 and play with the web-demo
@@ -84,35 +84,35 @@ PORT=8081 node ./assets.app.js
 ```
 
 #### output from browser
-[![screenshot](https://kaizhu256.github.io/node-openid-lite/build/screenshot.testExampleSh.browser.%252F.png)](https://kaizhu256.github.io/node-openid-lite/build/app/assets.example.html)
+[![screenshot](https://kaizhu256.github.io/node-cms2/build/screenshot.testExampleSh.browser.%252F.png)](https://kaizhu256.github.io/node-cms2/build/app/assets.example.html)
 
 #### output from shell
-![screenshot](https://kaizhu256.github.io/node-openid-lite/build/screenshot.testExampleSh.svg)
+![screenshot](https://kaizhu256.github.io/node-cms2/build/screenshot.testExampleSh.svg)
 
 
 
 # quickstart example.js
-[![screenshot](https://kaizhu256.github.io/node-openid-lite/build/screenshot.testExampleJs.browser.%252F.png)](https://kaizhu256.github.io/node-openid-lite/build/app/assets.example.html)
+[![screenshot](https://kaizhu256.github.io/node-cms2/build/screenshot.testExampleJs.browser.%252F.png)](https://kaizhu256.github.io/node-cms2/build/app/assets.example.html)
 
 #### to run this example, follow the instruction in the script below
-- [example.js](https://kaizhu256.github.io/node-openid-lite/build..beta..travis-ci.org/example.js)
+- [example.js](https://kaizhu256.github.io/node-cms2/build..beta..travis-ci.org/example.js)
 ```javascript
 /*
 example.js
 
-this script will run a web-demo of openid-lite
+this script will run a web-demo of cms2
 
 instruction
     1. save this script as example.js
     2. run the shell command:
-        $ npm install openid-lite && PORT=8081 node example.js
+        $ npm install cms2 && PORT=8081 node example.js
     3. open a browser to http://127.0.0.1:8081 and play with the web-demo
     4. edit this script to suit your needs
 */
 
 
 
-/* istanbul instrument in package openid */
+/* istanbul instrument in package cms2 */
 /*jslint
     bitwise: true,
     browser: true,
@@ -153,8 +153,8 @@ instruction
             : global;
         // init utility2_rollup
         local = local.global.utility2_rollup || (local.modeJs === 'browser'
-            ? local.global.utility2_openid
-            : require('openid-lite'));
+            ? local.global.utility2_cms2
+            : require('cms2'));
         // init exports
         local.global.local = local;
     }());
@@ -434,7 +434,7 @@ utility2-comment -->\n\
 <script src="assets.utility2.rollup.js"></script>\n\
 <script>window.utility2.onResetBefore.counter += 1;</script>\n\
 <script src="jsonp.utility2.stateInit?callback=window.utility2.stateInit"></script>\n\
-<script src="assets.openid.js"></script>\n\
+<script src="assets.cms2.js"></script>\n\
 <script src="assets.example.js"></script>\n\
 <script src="assets.test.js"></script>\n\
 <script>window.utility2.onResetBefore();</script>\n\
@@ -475,9 +475,9 @@ utility2-comment -->\n\
                 case 'npm_package_description':
                     return 'the greatest app in the world!';
                 case 'npm_package_name':
-                    return 'openid-lite';
+                    return 'cms2';
                 case 'npm_package_nameLib':
-                    return 'openid';
+                    return 'cms2';
                 case 'npm_package_version':
                     return '0.0.1';
                 default:
@@ -493,10 +493,10 @@ utility2-comment -->\n\
             local.fs.readFileSync(__filename, 'utf8');
         // bug-workaround - long $npm_package_buildCustomOrg
         /* jslint-ignore-begin */
-        local.assetsDict['/assets.openid.js'] =
-            local.assetsDict['/assets.openid.js'] ||
+        local.assetsDict['/assets.cms2.js'] =
+            local.assetsDict['/assets.cms2.js'] ||
             local.fs.readFileSync(
-                local.__dirname + '/lib.openid.js',
+                local.__dirname + '/lib.cms2.js',
                 'utf8'
             ).replace((/^#!/), '//');
         /* jslint-ignore-end */
@@ -527,40 +527,40 @@ utility2-comment -->\n\
 ```
 
 #### output from browser
-[![screenshot](https://kaizhu256.github.io/node-openid-lite/build/screenshot.testExampleJs.browser.%252F.png)](https://kaizhu256.github.io/node-openid-lite/build/app/assets.example.html)
+[![screenshot](https://kaizhu256.github.io/node-cms2/build/screenshot.testExampleJs.browser.%252F.png)](https://kaizhu256.github.io/node-cms2/build/app/assets.example.html)
 
 #### output from shell
-![screenshot](https://kaizhu256.github.io/node-openid-lite/build/screenshot.testExampleJs.svg)
+![screenshot](https://kaizhu256.github.io/node-cms2/build/screenshot.testExampleJs.svg)
 
 
 
 # extra screenshots
-1. [https://kaizhu256.github.io/node-openid-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png](https://kaizhu256.github.io/node-openid-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)
-[![screenshot](https://kaizhu256.github.io/node-openid-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://kaizhu256.github.io/node-openid-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)
+1. [https://kaizhu256.github.io/node-cms2/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png](https://kaizhu256.github.io/node-cms2/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)
+[![screenshot](https://kaizhu256.github.io/node-cms2/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://kaizhu256.github.io/node-cms2/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)
 
-1. [https://kaizhu256.github.io/node-openid-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png](https://kaizhu256.github.io/node-openid-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png)
-[![screenshot](https://kaizhu256.github.io/node-openid-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png)](https://kaizhu256.github.io/node-openid-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png)
+1. [https://kaizhu256.github.io/node-cms2/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png](https://kaizhu256.github.io/node-cms2/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png)
+[![screenshot](https://kaizhu256.github.io/node-cms2/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png)](https://kaizhu256.github.io/node-cms2/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png)
 
-1. [https://kaizhu256.github.io/node-openid-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png](https://kaizhu256.github.io/node-openid-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png)
-[![screenshot](https://kaizhu256.github.io/node-openid-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png)](https://kaizhu256.github.io/node-openid-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png)
+1. [https://kaizhu256.github.io/node-cms2/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png](https://kaizhu256.github.io/node-cms2/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png)
+[![screenshot](https://kaizhu256.github.io/node-cms2/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png)](https://kaizhu256.github.io/node-cms2/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png)
 
-1. [https://kaizhu256.github.io/node-openid-lite/build/screenshot.deployGithub.browser.%252Fnode-openid-lite%252Fbuild%252Fapp%252Fassets.swgg.html.png](https://kaizhu256.github.io/node-openid-lite/build/screenshot.deployGithub.browser.%252Fnode-openid-lite%252Fbuild%252Fapp%252Fassets.swgg.html.png)
-[![screenshot](https://kaizhu256.github.io/node-openid-lite/build/screenshot.deployGithub.browser.%252Fnode-openid-lite%252Fbuild%252Fapp%252Fassets.swgg.html.png)](https://kaizhu256.github.io/node-openid-lite/build/screenshot.deployGithub.browser.%252Fnode-openid-lite%252Fbuild%252Fapp%252Fassets.swgg.html.png)
+1. [https://kaizhu256.github.io/node-cms2/build/screenshot.deployGithub.browser.%252Fnode-cms2%252Fbuild%252Fapp%252Fassets.swgg.html.png](https://kaizhu256.github.io/node-cms2/build/screenshot.deployGithub.browser.%252Fnode-cms2%252Fbuild%252Fapp%252Fassets.swgg.html.png)
+[![screenshot](https://kaizhu256.github.io/node-cms2/build/screenshot.deployGithub.browser.%252Fnode-cms2%252Fbuild%252Fapp%252Fassets.swgg.html.png)](https://kaizhu256.github.io/node-cms2/build/screenshot.deployGithub.browser.%252Fnode-cms2%252Fbuild%252Fapp%252Fassets.swgg.html.png)
 
-1. [https://kaizhu256.github.io/node-openid-lite/build/screenshot.deployGithub.browser.%252Fnode-openid-lite%252Fbuild%252Fapp.png](https://kaizhu256.github.io/node-openid-lite/build/screenshot.deployGithub.browser.%252Fnode-openid-lite%252Fbuild%252Fapp.png)
-[![screenshot](https://kaizhu256.github.io/node-openid-lite/build/screenshot.deployGithub.browser.%252Fnode-openid-lite%252Fbuild%252Fapp.png)](https://kaizhu256.github.io/node-openid-lite/build/screenshot.deployGithub.browser.%252Fnode-openid-lite%252Fbuild%252Fapp.png)
+1. [https://kaizhu256.github.io/node-cms2/build/screenshot.deployGithub.browser.%252Fnode-cms2%252Fbuild%252Fapp.png](https://kaizhu256.github.io/node-cms2/build/screenshot.deployGithub.browser.%252Fnode-cms2%252Fbuild%252Fapp.png)
+[![screenshot](https://kaizhu256.github.io/node-cms2/build/screenshot.deployGithub.browser.%252Fnode-cms2%252Fbuild%252Fapp.png)](https://kaizhu256.github.io/node-cms2/build/screenshot.deployGithub.browser.%252Fnode-cms2%252Fbuild%252Fapp.png)
 
-1. [https://kaizhu256.github.io/node-openid-lite/build/screenshot.deployGithubTest.browser.%252Fnode-openid-lite%252Fbuild%252Fapp.png](https://kaizhu256.github.io/node-openid-lite/build/screenshot.deployGithubTest.browser.%252Fnode-openid-lite%252Fbuild%252Fapp.png)
-[![screenshot](https://kaizhu256.github.io/node-openid-lite/build/screenshot.deployGithubTest.browser.%252Fnode-openid-lite%252Fbuild%252Fapp.png)](https://kaizhu256.github.io/node-openid-lite/build/screenshot.deployGithubTest.browser.%252Fnode-openid-lite%252Fbuild%252Fapp.png)
+1. [https://kaizhu256.github.io/node-cms2/build/screenshot.deployGithubTest.browser.%252Fnode-cms2%252Fbuild%252Fapp.png](https://kaizhu256.github.io/node-cms2/build/screenshot.deployGithubTest.browser.%252Fnode-cms2%252Fbuild%252Fapp.png)
+[![screenshot](https://kaizhu256.github.io/node-cms2/build/screenshot.deployGithubTest.browser.%252Fnode-cms2%252Fbuild%252Fapp.png)](https://kaizhu256.github.io/node-cms2/build/screenshot.deployGithubTest.browser.%252Fnode-cms2%252Fbuild%252Fapp.png)
 
-1. [https://kaizhu256.github.io/node-openid-lite/build/screenshot.npmTest.browser.%252F.png](https://kaizhu256.github.io/node-openid-lite/build/screenshot.npmTest.browser.%252F.png)
-[![screenshot](https://kaizhu256.github.io/node-openid-lite/build/screenshot.npmTest.browser.%252F.png)](https://kaizhu256.github.io/node-openid-lite/build/screenshot.npmTest.browser.%252F.png)
+1. [https://kaizhu256.github.io/node-cms2/build/screenshot.npmTest.browser.%252F.png](https://kaizhu256.github.io/node-cms2/build/screenshot.npmTest.browser.%252F.png)
+[![screenshot](https://kaizhu256.github.io/node-cms2/build/screenshot.npmTest.browser.%252F.png)](https://kaizhu256.github.io/node-cms2/build/screenshot.npmTest.browser.%252F.png)
 
-1. [https://kaizhu256.github.io/node-openid-lite/build/screenshot.testExampleJs.browser.%252F.png](https://kaizhu256.github.io/node-openid-lite/build/screenshot.testExampleJs.browser.%252F.png)
-[![screenshot](https://kaizhu256.github.io/node-openid-lite/build/screenshot.testExampleJs.browser.%252F.png)](https://kaizhu256.github.io/node-openid-lite/build/screenshot.testExampleJs.browser.%252F.png)
+1. [https://kaizhu256.github.io/node-cms2/build/screenshot.testExampleJs.browser.%252F.png](https://kaizhu256.github.io/node-cms2/build/screenshot.testExampleJs.browser.%252F.png)
+[![screenshot](https://kaizhu256.github.io/node-cms2/build/screenshot.testExampleJs.browser.%252F.png)](https://kaizhu256.github.io/node-cms2/build/screenshot.testExampleJs.browser.%252F.png)
 
-1. [https://kaizhu256.github.io/node-openid-lite/build/screenshot.testExampleSh.browser.%252F.png](https://kaizhu256.github.io/node-openid-lite/build/screenshot.testExampleSh.browser.%252F.png)
-[![screenshot](https://kaizhu256.github.io/node-openid-lite/build/screenshot.testExampleSh.browser.%252F.png)](https://kaizhu256.github.io/node-openid-lite/build/screenshot.testExampleSh.browser.%252F.png)
+1. [https://kaizhu256.github.io/node-cms2/build/screenshot.testExampleSh.browser.%252F.png](https://kaizhu256.github.io/node-cms2/build/screenshot.testExampleSh.browser.%252F.png)
+[![screenshot](https://kaizhu256.github.io/node-cms2/build/screenshot.testExampleSh.browser.%252F.png)](https://kaizhu256.github.io/node-cms2/build/screenshot.testExampleSh.browser.%252F.png)
 
 
 
@@ -568,7 +568,7 @@ utility2-comment -->\n\
 ```json
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
-    "description": "openid app",
+    "description": "cms2 app",
     "devDependencies": {
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "utility2": "kaizhu256/node-utility2#alpha"
@@ -576,20 +576,20 @@ utility2-comment -->\n\
     "engines": {
         "node": ">=4.0"
     },
-    "homepage": "https://github.com/kaizhu256/node-openid-lite",
+    "homepage": "https://github.com/kaizhu256/node-cms2",
     "keywords": [],
     "license": "MIT",
-    "main": "lib.openid.js",
-    "name": "openid-lite",
-    "nameLib": "openid",
-    "nameOriginal": "openid-lite",
+    "main": "lib.cms2.js",
+    "name": "cms2",
+    "nameLib": "cms2",
+    "nameOriginal": "cms2",
     "os": [
         "darwin",
         "linux"
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/kaizhu256/node-openid-lite.git"
+        "url": "https://github.com/kaizhu256/node-cms2.git"
     },
     "scripts": {
         "build-ci": "utility2 shReadmeTest build_ci.sh",
@@ -607,7 +607,7 @@ utility2-comment -->\n\
 
 
 # changelog of last 50 commits
-[![screenshot](https://kaizhu256.github.io/node-openid-lite/build/screenshot.gitLog.svg)](https://github.com/kaizhu256/node-openid-lite/commits)
+[![screenshot](https://kaizhu256.github.io/node-cms2/build/screenshot.gitLog.svg)](https://github.com/kaizhu256/node-cms2/commits)
 
 
 
@@ -619,13 +619,14 @@ utility2-comment -->\n\
 # this shell script will run the build for this package
 
 shBuildCiAfter() {(set -e
+    # shDeployCustom
     shDeployGithub
     # shDeployHeroku
     shReadmeTest example.sh
 )}
 
 shBuildCiBefore() {(set -e
-    shNpmTestPublished
+    # shNpmTestPublished
     shReadmeTest example.js
 )}
 
